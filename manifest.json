@@ -1,0 +1,16 @@
+{
+    "manifest_version": 3,
+    "name": "trackage",
+    "version": "1.0",
+    "description": "Track packages directly from your browser by highlighting a tracking number.",
+    "permissions": ["contextMenus", "activeTab", "scripting"],
+    "background": {
+      "service_worker": "background.js"
+    },
+
+    "icons": {
+      "16": "icon16.png",
+      "128": "icon128.png"
+    }
+  }
+  
