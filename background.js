@@ -37,4 +37,45 @@ chrome.runtime.onInstalled.addListener(() => {
       chrome.tabs.create({ url: couriers[info.menuItemId] });
     }
   });
-  
+
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.contextMenus.create({
+    id: "trackPackageAuto",
+    title: "Track this package automatically",
+    contexts: ["selection"]
+  });
+});
+
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+  if (info.menuItemId === "trackPackageAuto") {
+    const trackingNumber = info.selectionText.trim();
+    const courier = identifyCourier(trackingNumber);
+
+    if (courier) {
+      const trackingUrl = `${courier.url}${trackingNumber}`;
+      chrome.tabs.create({ url: trackingUrl });
+    } else {
+      alert("Could not identify the courier service. Please select the correct service manually.");
+    }
+  }
+});
+
+function identifyCourier(trackingNumber) {
+  // Define regex patterns for different couriers
+  const couriers = [
+    { id: "omniva", name: "Omniva", url: "https://minuold.omniva.ee/track/", pattern: /^[A-Z]{2}[0-9]{9}[A-Z]{2}$/i }, // Example: EE123456789EE
+    { id: "itella", name: "Itella", url: "https://itella.lt/track?trackId=", pattern: /^[0-9]{10,14}$/ }, // Example: 1234567890
+    { id: "dpd", name: "DPD", url: "https://track.dpd.com/tracking?parcelNumber=", pattern: /^[0-9]{12}$/ }, // Example: 012345678901
+    { id: "venipak", name: "Venipak", url: "https://www.venipak.com/tracking/?id=", pattern: /^[A-Z0-9]{8,12}$/i } // Example: ABCD123456
+  ];
+
+  // Try to match the tracking number against each courier's pattern
+  for (const courier of couriers) {
+    if (courier.pattern.test(trackingNumber)) {
+      return courier;
+    }
+  }
+
+  // If no match is found, return null
+  return null;
+}
