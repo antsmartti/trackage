@@ -41,7 +41,7 @@ chrome.runtime.onInstalled.addListener(() => {
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
     id: "trackPackageAuto",
-    title: "Track this package automatically",
+    title: "Automatically identify courier",
     contexts: ["selection"]
   });
 });
