@@ -9,7 +9,7 @@ chrome.runtime.onInstalled.addListener(() => {
     // Create sub-menus for each courier
     const couriers = [
       { id: "omniva", title: "Omniva", url: "https://minuold.omniva.ee/track/" },
-      { id: "itella", title: "Itella", url: "https://itella.ee/track?trackId=" },
+      { id: "itella", title: "Itella", url: "https://itella.ee/eraklient/saadetise-jalgimine/?trackingCode=" },
       { id: "dpd", title: "DPD", url: "https://www.dpdgroup.com/ee/mydpd/my-parcels/incoming?parcelNumber=" },
       { id: "venipak", title: "Venipak", url: "https://www.venipak.com/tracking/?id=" }
     ];
@@ -28,7 +28,7 @@ chrome.runtime.onInstalled.addListener(() => {
     const selectedText = info.selectionText.trim();
     const couriers = {
       omniva: `https://minuold.omniva.ee/track/${selectedText}`,
-      itella: `https://itella.ee/track?trackId=${selectedText}`,
+      itella: `https://itella.ee/eraklient/saadetise-jalgimine/?trackingCode=${selectedText}`,
       dpd: `https://www.dpdgroup.com/ee/mydpd/my-parcels/incoming?parcelNumber=${selectedText}`,
       venipak: `https://www.venipak.com/tracking/?id=${selectedText}`
     };
@@ -64,7 +64,7 @@ function identifyCourier(trackingNumber) {
   // Define regex patterns for different couriers
   const couriers = [
     { id: "omniva", name: "Omniva", url: "https://minuold.omniva.ee/track/", pattern: /^[A-Z]{2}[0-9]{9}[A-Z]{2}$/i }, // Example: EE123456789EE
-    { id: "itella", name: "Itella", url: "https://itella.lt/track?trackId=", pattern: /^[A-Z]{2}[A-Z]{2}[0-9]{17}$/ }, // Example: JJFI63864910006517620
+    { id: "itella", name: "Itella", url: "https://itella.ee/eraklient/saadetise-jalgimine/?trackingCode=", pattern: /^[A-Z]{2}[A-Z]{2}[0-9]{17}$/ }, // Example: JJFI63864910006517620
     { id: "dpd", name: "DPD", url: "https://track.dpd.com/tracking?parcelNumber=", pattern: /^[0-9]{12}$/ }, // Example: 012345678901
     { id: "venipak", name: "Venipak", url: "https://www.venipak.com/tracking/?id=", pattern: /^[A-Z0-9]{8,12}$/i } // Example: ABCD123456
   ];
