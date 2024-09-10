@@ -64,7 +64,7 @@ function identifyCourier(trackingNumber) {
   // Define regex patterns for different couriers
   const couriers = [
     { id: "omniva", name: "Omniva", url: "https://minuold.omniva.ee/track/", pattern: /^[A-Z]{2}[0-9]{9}[A-Z]{2}$/i }, // Example: EE123456789EE
-    { id: "itella", name: "Itella", url: "https://itella.lt/track?trackId=", pattern: /^[A-Z]{2}[A-Z]{2}[0-9]{14}$/ }, // Example: JJFI63864910006517620
+    { id: "itella", name: "Itella", url: "https://itella.lt/track?trackId=", pattern: /^[A-Z]{2}[A-Z]{2}[0-9]{17}$/ }, // Example: JJFI63864910006517620
     { id: "dpd", name: "DPD", url: "https://track.dpd.com/tracking?parcelNumber=", pattern: /^[0-9]{12}$/ }, // Example: 012345678901
     { id: "venipak", name: "Venipak", url: "https://www.venipak.com/tracking/?id=", pattern: /^[A-Z0-9]{8,12}$/i } // Example: ABCD123456
   ];
