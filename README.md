@@ -6,4 +6,4 @@ Chrome extension, et kiirendada paki teekonna jälgimist.
 Lae alla zip, ava Chrome's laiendused, lae üles zip. 
 
 ## Kuidas kasutada
-Tee oma paki jälgimiskood brauseris aktiivseks, tee sellel parem-klõps ja vali oma kuller. Võid ka lasta laiendusel proovida tuvastada automaatselt, milles vedaja pakiga on tegu. 
+Tee oma paki jälgimiskood brauseris aktiivseks, tee sellel parem-klõps ja vali oma kuller. Võid ka lasta laiendusel proovida tuvastada automaatselt, millise vedaja pakiga on tegu. 
