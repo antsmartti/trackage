@@ -11,7 +11,8 @@ chrome.runtime.onInstalled.addListener(() => {
       { id: "omniva", title: "Omniva", url: "https://minuold.omniva.ee/track/" },
       { id: "itella", title: "Itella", url: "https://www.smartposti.ee/pakkide-kattesaamine/saadetise-jalgimine?trackingCode=" },
       { id: "dpd", title: "DPD", url: "https://www.dpdgroup.com/ee/mydpd/my-parcels/track?lang=ee_ee&parcelNumber=" },
-      { id: "venipak", title: "Venipak", url: "https://venipak.com/ee/tracking/track/" }
+      { id: "venipak", title: "Venipak", url: "https://venipak.com/ee/tracking/track/" }, 
+      { id: "unisend", title: "Unisend", url: "https://unisend.ee/jalgimine/?code=" }
     ];
   
     couriers.forEach(courier => {
@@ -30,7 +31,8 @@ chrome.runtime.onInstalled.addListener(() => {
       omniva: `https://minuold.omniva.ee/track/${selectedText}`,
       itella: `https://www.smartposti.ee/pakkide-kattesaamine/saadetise-jalgimine?trackingCode=${selectedText}`,
       dpd: `https://www.dpdgroup.com/ee/mydpd/my-parcels/track?lang=ee_ee&parcelNumber=${selectedText}`,
-      venipak: `https://venipak.com/ee/tracking/track/${selectedText}`
+      venipak: `https://venipak.com/ee/tracking/track/${selectedText}`,
+      unisend: `https://unisend.ee/jalgimine/?code=${selectedText}`
     };
   
     if (couriers[info.menuItemId]) {
